@@ -1,14 +1,9 @@
 import * as S from "./styles";
 
-interface MainProps {
-  title: string;
-  description: string;
-}
-
 const Main = ({
   title = "React Avançado",
   description = "Typescript, ReactJS, NextJS e Styled Components",
-}: MainProps) => {
+}) => {
   return (
     <S.Wrapper>
       <S.Logo
