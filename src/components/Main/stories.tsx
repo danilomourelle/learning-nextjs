@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Main from ".";
 
-export default {
+const meta: Meta<typeof Main> = {
   title: "Main",
   component: Main,
-} as Meta;
+};
+
+export default meta;
 
 export const Default: StoryObj = {};
