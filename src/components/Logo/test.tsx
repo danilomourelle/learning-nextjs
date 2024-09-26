@@ -43,4 +43,13 @@ describe("<Logo />", () => {
       width: "20rem",
     });
   });
+  it("should render a bigger logo without text on mobile if hideOnMobile", () => {
+    renderWithTheme(<Logo $hideOnMobile />);
+
+    const logoComponent = screen.getByLabelText(/won games/i).parentElement;
+
+    expect(logoComponent).toHaveStyleRule("width", "5.8rem", {
+      media: "(max-width:  768px)",
+    });
+  });
 });
