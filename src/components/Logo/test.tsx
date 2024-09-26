@@ -25,4 +25,22 @@ describe("<Logo />", () => {
       color: "#030517",
     });
   });
+  it("should render regular size by default", () => {
+    renderWithTheme(<Logo />);
+
+    const logoComponent = screen.getByLabelText(/won games/i).parentElement;
+
+    expect(logoComponent).toHaveStyle({
+      width: "11rem",
+    });
+  });
+  it("should render large logo when size is passed", () => {
+    renderWithTheme(<Logo size="large" />);
+
+    const logoComponent = screen.getByLabelText(/won games/i).parentElement;
+
+    expect(logoComponent).toHaveStyle({
+      width: "20rem",
+    });
+  });
 });
