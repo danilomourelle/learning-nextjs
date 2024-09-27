@@ -36,4 +36,13 @@ describe("<Button />", () => {
       padding: "0.8rem 4.8rem 0.8rem 4.8rem",
     });
   });
+  it("should render the full width when props set", () => {
+    renderWithTheme(<Button $fullWidth>Lorem ipsum</Button>);
+
+    const component = screen.getByRole("button", { name: /lorem ipsum/i });
+
+    expect(component).toHaveStyle({
+      width: "100%",
+    });
+  });
 });
