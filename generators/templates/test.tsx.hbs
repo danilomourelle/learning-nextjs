@@ -6,9 +6,11 @@ describe("<{{pascalCase name }} />", () => {
   it("should render the head", () => {
     const { container } = render(<{{pascalCase name}} />);
 
-    expect(
-      screen.getByRole("heading", { name: /{{pascalCase name}}/i }),
-    ).toBeInTheDocument();
+    const component = screen.getByRole("heading", { name: /won games/i });
+
+    expect(component).toHaveStyle({
+      "border-left": "0.7rem solid #3CD3C1",
+    });
 
     expect(container.firstChild).toMatchSnapshot();
   });
