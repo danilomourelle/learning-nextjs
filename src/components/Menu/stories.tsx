@@ -9,3 +9,10 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 
 export const Default: StoryObj = {};
+
+Default.parameters = {
+  layout: "fullscreen",
+  background: {
+    default: "dark",
+  },
+};
