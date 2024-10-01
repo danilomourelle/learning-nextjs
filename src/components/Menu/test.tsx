@@ -44,4 +44,18 @@ describe("<Menu />", () => {
     expect(fullMenu.getAttribute("aria-hidden")).toBe("true");
     expect(fullMenu).toHaveStyle({ opacity: 0 });
   });
+  it("should show register box when no user is logged in", () => {
+    renderWithTheme(<Menu />);
+
+    expect(screen.getByText(/log in now/i)).toBeInTheDocument();
+    expect(screen.getByText(/sign up/i)).toBeInTheDocument();
+  });
+  it("should show all links when there is an user logged in", () => {
+    renderWithTheme(<Menu username="dan" />);
+
+    expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/my account/i)).toBeInTheDocument();
+    expect(screen.getByText(/wishlist/i)).toBeInTheDocument();
+  });
 });
