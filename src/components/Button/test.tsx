@@ -58,4 +58,15 @@ describe("<Button />", () => {
     expect(button).toBeInTheDocument();
     expect(icon).toBeInTheDocument();
   });
+  it("should render button as a anchor", () => {
+    renderWithTheme(
+      <Button as="a" href="/link">
+        Buy now
+      </Button>,
+    );
+
+    const buttonAsLink = screen.getByRole("link", { name: /buy now/i });
+
+    expect(buttonAsLink).toHaveAttribute("href", "/link");
+  });
 });
