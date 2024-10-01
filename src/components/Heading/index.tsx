@@ -5,17 +5,20 @@ export type HeadingProps = {
   color?: "white" | "black";
   $lineLeft?: boolean;
   $lineBottom?: boolean;
+  $size?: "small" | "medium";
+  $lineColor?: "primary" | "secondary";
 };
 
-export default function Heading({
-  children,
-  color = "white",
-  $lineLeft = false,
-  $lineBottom = false,
-}: HeadingProps) {
-  return (
-    <S.Wrapper color={color} $lineLeft={$lineLeft} $lineBottom={$lineBottom}>
-      {children}
-    </S.Wrapper>
-  );
+export default function Heading(props: HeadingProps) {
+  const { children, ...others } = props;
+  const defaultProps: Required<Omit<HeadingProps, "children">> = {
+    color: "white",
+    $lineLeft: false,
+    $lineBottom: false,
+    $size: "medium",
+    $lineColor: "primary",
+    ...others,
+  };
+
+  return <S.Wrapper {...defaultProps}>{children}</S.Wrapper>;
 }
