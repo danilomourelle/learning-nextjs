@@ -8,6 +8,10 @@ exports[`<Button /> should render the medium size by default 1`] = `
   border-radius: 0.4rem;
   padding: 0.8rem;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 4rem;
   font-size: 1.4rem;
   padding-right: 3.2rem;
