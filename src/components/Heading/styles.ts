@@ -5,13 +5,16 @@ import media from "styled-media-query";
 import { HeadingProps } from ".";
 
 const wrapperModifiers = {
-  lineLeft: (theme: DefaultTheme, lineColor: HeadingProps["$lineColor"]) => css`
+  lineLeft: (
+    theme: DefaultTheme,
+    lineColor: Required<HeadingProps>["$lineColor"],
+  ) => css`
     padding-left: ${theme.spacings.xxsmall};
-    border-left: 0.7rem solid ${theme.colors[lineColor!]};
+    border-left: 0.7rem solid ${theme.colors[lineColor]};
   `,
   lineBottom: (
     theme: DefaultTheme,
-    lineColor: HeadingProps["$lineColor"],
+    lineColor: Required<HeadingProps>["$lineColor"],
   ) => css`
     position: relative;
     margin-bottom: ${theme.spacings.medium};
@@ -22,7 +25,7 @@ const wrapperModifiers = {
       left: 0;
       bottom: -1rem;
       width: 5rem;
-      border-bottom: 0.5rem solid ${theme.colors[lineColor!]};
+      border-bottom: 0.5rem solid ${theme.colors[lineColor]};
     }
   `,
   small: (theme: DefaultTheme) => css`
@@ -39,7 +42,7 @@ const wrapperModifiers = {
   `,
 };
 
-export const Wrapper = styled.h2<HeadingProps>`
+export const Wrapper = styled.h2<Required<HeadingProps>>`
   ${({ theme, color, $lineLeft, $lineBottom, $size, $lineColor }) => css`
     color: ${theme.colors[color!]};
 
