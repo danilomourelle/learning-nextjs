@@ -29,5 +29,13 @@ export const WithIcon: StoryObj<ButtonProps> = {
   args: {
     icon: <AddShoppingCart size={18} />,
   },
-  render: (args) => <Button {...args} />,
+  render: (args: ButtonProps) => <Button {...args} />,
+};
+
+export const ButtonLink: StoryObj<ButtonProps> = {
+  args: {
+    as: "a",
+    href: "/link",
+  },
+  render: (args: ButtonProps) => <Button {...args} />,
 };
