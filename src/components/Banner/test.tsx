@@ -13,7 +13,7 @@ const props = {
 
 describe("<Banner />", () => {
   it("should render the head", () => {
-    renderWithTheme(<Banner {...props} />);
+    const { container } = renderWithTheme(<Banner {...props} />);
 
     const title = screen.getByRole("heading", { name: props.title });
     const subtitle = screen.getByRole("heading", { name: props.subtitle });
@@ -24,5 +24,7 @@ describe("<Banner />", () => {
     expect(subtitle).toBeInTheDocument();
     expect(image).toBeInTheDocument();
     expect(buttonLink).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

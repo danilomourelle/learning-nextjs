@@ -18,7 +18,7 @@ export default function Banner({
 }: BannerProps) {
   return (
     <S.Wrapper>
-      <S.Image $src={img} role="img" aria-label={title} />
+      <S.Image src={img} role="img" aria-label={title} />
       <S.Caption>
         <S.Title>{title}</S.Title>
         <S.Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />
