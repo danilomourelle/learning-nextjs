@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Banner from ".";
+import Banner, { BannerProps } from ".";
 
 const meta: Meta<typeof Banner> = {
   title: "Banner",
@@ -11,11 +11,40 @@ const meta: Meta<typeof Banner> = {
     buttonLabel: "Buy now",
     buttonLink: "/games/defy-death",
   },
-  parameters: {
-    layout: "fullscreen",
+  argTypes: {
+    ribbon: {
+      type: "string",
+    },
+    ribbonColor: {
+      control: "radio",
+      options: ["primary", "secondary"],
+    },
+    ribbonSize: {
+      control: "radio",
+      options: ["small", "normal"],
+    },
   },
 };
 
 export default meta;
 
-export const Default: StoryObj = {};
+export const Default: StoryObj<BannerProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
+      <Banner {...args} />
+    </div>
+  ),
+};
+
+export const WithRibbon: StoryObj<BannerProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
+      <Banner {...args} />
+    </div>
+  ),
+};
+WithRibbon.args = {
+  ribbon: "Best seller",
+  ribbonColor: "primary",
+  ribbonSize: "normal",
+};

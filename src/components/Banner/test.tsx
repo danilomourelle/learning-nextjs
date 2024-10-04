@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 
-import Banner from ".";
 import { renderWithTheme } from "@/utils/tests/helpers";
+import Banner from ".";
 
 const props = {
   img: "https://unsplash.com/pt-br/fotografias/menino-jogando-donkey-kong-arcade-box-PgToaHfQjq0",
@@ -12,7 +12,7 @@ const props = {
 };
 
 describe("<Banner />", () => {
-  it("should render the head", () => {
+  it("should render the banner", () => {
     const { container } = renderWithTheme(<Banner {...props} />);
 
     const title = screen.getByRole("heading", { name: props.title });
@@ -26,5 +26,24 @@ describe("<Banner />", () => {
     expect(buttonLink).toBeInTheDocument();
 
     expect(container.firstChild).toMatchSnapshot();
+  });
+  it("should render a Ribbon", () => {
+    renderWithTheme(
+      <Banner
+        {...props}
+        ribbon="My Ribbon"
+        ribbonSize="small"
+        ribbonColor="secondary"
+      />,
+    );
+
+    const ribbon = screen.getByText(/my ribbon/i);
+
+    expect(ribbon).toBeInTheDocument();
+    expect(ribbon).toHaveStyle({
+      backgroundColor: "#3CD3C1",
+      height: "2.6rem",
+      fontSize: "1.2rem",
+    });
   });
 });
