@@ -38,7 +38,7 @@ export const Default: StoryObj<BannerProps> = {
 
 export const WithRibbon: StoryObj<BannerProps> = {
   render: (args) => (
-    <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
+    <div style={{ maxWidth: "120rem", margin: "0 auto" }}>
       <Banner {...args} />
     </div>
   ),
