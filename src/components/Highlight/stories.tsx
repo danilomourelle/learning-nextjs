@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Highlight from ".";
+import Highlight, { HighlightProps } from ".";
 
 const meta: Meta<typeof Highlight> = {
   title: "Highlight",
@@ -16,3 +16,10 @@ const meta: Meta<typeof Highlight> = {
 export default meta;
 
 export const Default: StoryObj = {};
+
+export const WithFloat: StoryObj<HighlightProps> = {
+  args: {
+    floatImage: "/img/red-dead-float.png",
+  },
+  render: (args: HighlightProps) => <Highlight {...args} />,
+};

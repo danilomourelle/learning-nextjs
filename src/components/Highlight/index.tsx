@@ -7,6 +7,7 @@ export type HighlightProps = {
   buttonLabel: string;
   buttonLink: string;
   $backgroundImage: string;
+  floatImage?: string;
 };
 
 export default function Highlight({
@@ -15,9 +16,11 @@ export default function Highlight({
   buttonLabel,
   buttonLink,
   $backgroundImage,
+  floatImage,
 }: HighlightProps) {
   return (
     <S.Wrapper $backgroundImage={$backgroundImage}>
+      {!!floatImage && <S.FloatImage src={floatImage} alt={title} />}
       <S.Content>
         <S.Title>{title}</S.Title>
         <S.Subtitle>{subtitle}</S.Subtitle>
