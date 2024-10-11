@@ -4,8 +4,31 @@ import styled, { css } from "styled-components";
 import { HighlightProps } from ".";
 import media from "styled-media-query";
 
-export const Wrapper = styled.section<Pick<HighlightProps, "$backgroundImage">>`
-  ${({ $backgroundImage }) => css`
+const wrapperModifier = {
+  right: () => css`
+    grid-template-areas: "content floatImage";
+
+    ${Content} {
+      text-align: left;
+    }
+
+    ${FloatImage} {
+      justify-self: end;
+    }
+  `,
+  left: () => css`
+    grid-template-areas: "floatImage content";
+
+    ${Content} {
+      text-align: right;
+    }
+  `,
+};
+
+export const Wrapper = styled.section<
+  Pick<Required<HighlightProps>, "$backgroundImage" | "alignment">
+>`
+  ${({ $backgroundImage, alignment }) => css`
     position: relative;
     background-image: url(${$backgroundImage});
     background-position: center center;
@@ -25,6 +48,8 @@ export const Wrapper = styled.section<Pick<HighlightProps, "$backgroundImage">>`
     ${media.greaterThan("medium")`
       height: 32rem;
     `}
+
+    ${wrapperModifier[alignment]()}
   `}
 `;
 
@@ -46,7 +71,6 @@ export const Content = styled.div`
   ${({ theme }) => css`
     grid-area: content;
     z-index: ${theme.layers.base};
-    text-align: right;
     padding: ${theme.spacings.xsmall};
 
     ${media.greaterThan("medium")`
@@ -63,7 +87,7 @@ export const Title = styled.h2`
     color: ${theme.colors.white};
 
     ${media.greaterThan("medium")`
-      font-size: ${theme.font.sizes.xxlarge}
+      font-size: ${theme.font.sizes.xxlarge};
     `}
   `}
 `;
@@ -76,7 +100,7 @@ export const Subtitle = styled.h3`
     margin-bottom: ${theme.spacings.small};
 
     ${media.greaterThan("medium")`
-      font-size: ${theme.font.sizes.large}
+      font-size: ${theme.font.sizes.large};
     `}
   `}
 `;
