@@ -10,6 +10,7 @@ export type GameCardProps = {
   developer: string;
   img: string;
   price: string;
+  promotionalPrice?: string;
 };
 
 export default function GameCard({
@@ -17,6 +18,7 @@ export default function GameCard({
   img,
   price,
   title,
+  promotionalPrice,
 }: GameCardProps) {
   return (
     <S.Wrapper>
@@ -32,7 +34,8 @@ export default function GameCard({
           <FavoriteBorder aria-label="Add to Wishlist" />
         </S.FavButton>
         <S.BuyBox>
-          <S.Price>{price}</S.Price>
+          {!!promotionalPrice && <S.Price $isPromotional>{price}</S.Price>}
+          <S.Price>{promotionalPrice || price}</S.Price>
           <Button icon={<AddShoppingCart />} size="small" />
         </S.BuyBox>
       </S.Content>
