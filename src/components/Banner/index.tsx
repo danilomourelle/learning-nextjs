@@ -20,8 +20,8 @@ export default function Banner({
   buttonLabel,
   buttonLink,
   ribbon,
-  ribbonColor,
-  ribbonSize,
+  ribbonColor = "primary",
+  ribbonSize = "small",
 }: BannerProps) {
   return (
     <S.Wrapper>
